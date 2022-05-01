@@ -6,8 +6,8 @@ import librosa.display
 import matplotlib.pyplot as plt
 import numpy as np
 import pickle
-from tensorflow import keras
-from keras.models import load_model
+#from tensorflow import keras
+#from keras.models import load_model
 import joblib
 
 
@@ -29,7 +29,7 @@ def prediction(data,sampling_rate):
     
     
     path = "CnnModel.h5"
-    cnn_model = load_model(path)
+    cnn_model = pickle.load(path)
     arr=[] 
     mfccs = np.mean(librosa.feature.mfcc(y=data, sr=sampling_rate, n_mfcc=40).T,axis=0) 
     arr.append(mfccs)
